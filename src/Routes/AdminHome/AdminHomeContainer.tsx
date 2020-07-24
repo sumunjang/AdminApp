@@ -33,15 +33,14 @@ const AdminHomeContainer: React.FunctionComponent = () => {
     const handleQRclose = () => {
         setQRopen(false);
     };
-
-    const onChangeId = (e:any)=>{
-        setId(e.target.value);
-    };
-
+   
     const qrHandle={
         qrOpen,handleQRopen,handleQRclose
     };
-
+    
+    const onChangeId = (e:any)=>{
+        setId(e.target.value);
+    };
     const onChangePassword = (e:any)=>{
         setPw(e.target.value);
     };
@@ -50,7 +49,6 @@ const AdminHomeContainer: React.FunctionComponent = () => {
         e.preventDefault();
         let res:any = null;
         res = await request(id,pw);
-        console.log(res);
         if(res!==null){
             console.log(res);
             const newUser = {

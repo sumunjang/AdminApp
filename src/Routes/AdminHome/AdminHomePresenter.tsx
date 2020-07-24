@@ -121,13 +121,16 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
 
                 <Grid item sm={3}>
                 </Grid>
+                
                 <Grid container item sm={6} spacing={6} alignItems="center" alignContent="center">
+
                     <Grid item sm={12} xs={12} >
                         <div>
                             <MainImg src={mainImg} />
                             <h4 style={{ textAlign: "center" }}>정부인증 문진표 수문장 시설 관리시스템 ver 0.1</h4>
                         </div>
                     </Grid>
+
                     <Grid item sm={4} xs={12}>
                         {user.id !== null ?
                             <LinkWrapper to={`/admin/${user.id}/gateway`}>
@@ -140,18 +143,20 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
                             null
                         }
                     </Grid>
+
                     <Grid item sm={4} xs={12}>
                         {user.id !== null ?
                             <LinkWrapper to={`/admin/${user.id}/question`}>
                                 <IconButton color="primary" component="span" size="small">
                                     <AssignmentIcon style={{ fontSize: 40 }} />
                                 문진표 수정
-                            </IconButton>
+                                </IconButton>
                             </LinkWrapper>
                             :
                             <h3 style={{color:"blue"}}>로그인이 필요합니다.</h3>
                         }
                     </Grid>
+
                     <Grid item sm={4} xs={12}>
                         {user.id !== null ?
                             <div>
@@ -183,6 +188,7 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
                             null
                         }
                     </Grid>
+                
                 </Grid>
 
 

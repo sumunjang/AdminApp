@@ -8,23 +8,9 @@ import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 import { Link } from 'react-router-dom';
-import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import TextField from '@material-ui/core/TextField';
 
-type RootProps = {
-    id: String;
-    pw: String;
-    open: boolean;
-    user: any;
-    handleOpen: () => void;
-    handleClose: () => void;
-    onChangeId: (e: any) => void;
-    onChangePassword: (e: any) => void;
-    onSubmitForm: (e: any) => void;
-};
 const Login = styled(Button)``;
 const UserName = styled.div``;
 const Container = styled(Grid)`
@@ -51,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
 }));
-const RootHomePresenter = ({ user, id, pw, open, handleOpen, handleClose, onSubmitForm, onChangePassword, onChangeId }: RootProps) => {
+const RootHomePresenter = () => {
     const classes = useStyles();
     return (
         <>
