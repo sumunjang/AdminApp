@@ -110,7 +110,7 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
                             <form className={classes.paper} onSubmit={onSubmitForm}>
                                 <TextField onChange={onChangeId} value={id} required id="standard-required" label="아이디" defaultValue="" />
                                 <br />
-                                <TextField onChange={onChangePassword} value={pw} required id="standard-required" label="비밀번호" defaultValue="" />
+                                <TextField onChange={onChangePassword} value={pw} required id="standard-required" label="비밀번호" defaultValue="" type="password"/>
                                 <br />
                                 <br />
                                 <Button type="submit" variant="outlined" color="primary" > 로그인 </Button>

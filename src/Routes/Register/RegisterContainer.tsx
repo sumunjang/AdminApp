@@ -4,7 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const request = async (id:string,pw:string,name:string,addr:string,history:any)=>{
-    const res = await axios.post("http://34.105.29.115:3000/places/register",{userid:id,password:pw,placeName:name,address:addr});
+    const res = await axios.post("http://34.105.29.115:3000/places/register/",{userid:id,password:pw,placeName:name,address:addr});
     history.push("/root");
     console.log(res);
 }
