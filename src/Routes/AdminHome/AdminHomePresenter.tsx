@@ -174,7 +174,7 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
                                     <Fade in={qrHandle.qrOpen}>
                                         <Paper elevation={3} style={{ height: "200px", width: "200px", textAlign: "center" }} >
                                             <a style={{ color: "blue", textDecoration: "none", display: "block", marginTop: "25px", marginBottom: "10px", fontSize: "14px" }} ref={qr} onClick={downloadAQR}> QR코드를 클릭해 다운받기 </a>
-                                            <QRcode id="qrcode" value={`http://34.105.29.115:3000/forms/${user.id}`} onClick={downloadQR} style={{ cursor: "pointer" }} />
+                                            <QRcode id="qrcode" value={`/forms/${user.id}`} onClick={downloadQR} style={{ cursor: "pointer" }} />
                                         </Paper>
                                     </Fade>
                                 </Modal>
