@@ -20,7 +20,7 @@ const request = async (id: string,setQuestions:any,questions:any) => {
     return res;
 };
 const modifyRequest = async (id: string,questions:any) => {
-    const res = await axios.put(`http://34.105.29.115:3000/forms/${id}`,{data:questions}, {
+    const res = await axios.put(`http://34.105.29.115:3000/admin/forms/${id}`,{data:questions}, {
         headers: {
             Authorization: "Bearer " + Cookie.LoginCookies.getLoginCookies(),
         },
