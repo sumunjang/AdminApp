@@ -6,24 +6,24 @@ import { RouteProps } from "react-router-dom";
 
 const dummy = {
     name : "김명호", 
-    date : "2020-07-16",
+    date : "2020-07-24T14:53:07.580Z",
     access : true
 };
 
 const listDummy = [
     {
         name : "이상준", 
-        date : "2020-07-16",
+        date : "2020-07-24T14:53:07.580Z",
         access : false
     },
     {
         name : "이상호", 
-        date : "2020-07-16",
+        date : "2020-07-24T14:53:07.580Z",
         access : true
     },
     {
         name : "김명호", 
-        date : "2020-07-16",
+        date : "2020-07-24T14:53:07.580Z",
         access : true
     },
 ];

@@ -42,9 +42,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
     },
 }));
+const days = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
 const GatewayPresenter = ({ accesslist, accessOne }: gatewayProps) => {
     const classes = useStyles();
-
+    console.log(accessOne.date);
+    const parseDate = new Date(accessOne.date);
+    const newDate = String(parseDate.getFullYear())+"년 "+String(parseDate.getMonth())+"월 "+String(parseDate.getDate())+"일 "+days[parseDate.getDay()]+" ";
+    const hourMin = String(parseDate.getHours())+"시 "+String(parseDate.getMinutes())+"분";
     useEffect(() => {
         scrollToBottom();
         //
@@ -74,8 +78,9 @@ const GatewayPresenter = ({ accesslist, accessOne }: gatewayProps) => {
                     <PersonImg src="https://www.hellot.net/admin/crosseditor_3.5.0.06/binary/images/000233/20200401090627856_O1KGUWBN.jpg"></PersonImg>
                 </Grid>
                 <Grid item sm={4}>
-                    <h1>이름 : {accessOne.name}</h1>
-                    <h1>방문시각 : {accessOne.date}</h1>
+                    <h2>이름 : {accessOne.name}</h2>
+                    <h2>방문날짜 : {newDate}</h2>
+                    <h2>방문시각 : {hourMin}</h2>
                     {accessOne.access === true ? <h1 style={{color:'blue'}}>방문 허가</h1> : <h1  style={{color:'red'}}>방문 불허</h1>}
                 </Grid>
                 <PassListGrid item sm={3} >
@@ -91,7 +96,7 @@ const GatewayPresenter = ({ accesslist, accessOne }: gatewayProps) => {
                                                 : <NotInterestedIcon color="secondary"/>
                                             }
                                         </ListItemAvatar>
-                                        <ListItemText primary={person.name} secondary={person.date} />
+                                        <ListItemText primary={person.name} secondary={newDate} />
                                     </ListItem>
                                 )
                             })

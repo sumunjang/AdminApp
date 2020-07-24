@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/Input';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
@@ -12,7 +13,7 @@ type QuestionProps = {
     deleteQuestion: any,
     updateQuestion: any,
     addQuestion: any,
-    submitQuestion:any
+    submitQuestion: any
 };
 const Logo = styled.h1``;
 const Container = styled(Grid)`
@@ -32,7 +33,7 @@ const PaperWrapper = styled(Paper)`
     height: 100%;
     width: 100%;
 `;
-const QuestionPresenter = ({ questions, deleteQuestion, updateQuestion, addQuestion,submitQuestion }: QuestionProps) => {
+const QuestionPresenter = ({ questions, deleteQuestion, updateQuestion, addQuestion, submitQuestion }: QuestionProps) => {
     return (
         <>
             <Container container spacing={2}>
@@ -43,28 +44,30 @@ const QuestionPresenter = ({ questions, deleteQuestion, updateQuestion, addQuest
                 </Grid>
                 <QuestionGrid item xs={12} sm={6}>
                     <Paper elevation={9}>
-                        <h1>문진표 수정 </h1>
-                        {
-                            questions.map((question: any, index: number) => {
-                                return (
-                                    <div key={index}>
-                                        <Input style={{ width: '70%' }} id={question} value={question.question} onChange={updateQuestion} required={true} />
-                                        <IconButton aria-label="delete" onClick={() => deleteQuestion(question)}>
-                                            <DeleteIcon />
-                                        </IconButton>
-                                        <br /><br />
-                                    </div>
-                                );
-                            })
-                        }
-                        <div>
-                            <IconButton onClick={addQuestion}>
-                                <AddIcon /> 추가
-                            </IconButton>
-                            <IconButton onClick={submitQuestion}>
-                                <CheckIcon /> 완료
-                            </IconButton>
-                        </div>
+                        <form  onSubmit={submitQuestion}>
+                            <h1>문진표 수정 </h1>
+                            {
+                                questions.map((question: any, index: number) => {
+                                    return (
+                                        <div key={question.questionid}>
+                                            <TextField style={{ width: '70%' }} value={question.question} onChange={e => updateQuestion(e, index)} required={true} />
+                                            <IconButton aria-label="delete" onClick={() => deleteQuestion(index)}>
+                                                <DeleteIcon />
+                                            </IconButton>
+                                            <br /><br />
+                                        </div>
+                                    );
+                                })
+                            }
+                            <div>
+                                <IconButton onClick={addQuestion}>
+                                    <AddIcon /> 추가
+                                                </IconButton>
+                                <IconButton type="submit" >
+                                    <CheckIcon /> 완료
+                                </IconButton>
+                            </div>
+                        </form>
                         <br />
                     </Paper>
                 </QuestionGrid>

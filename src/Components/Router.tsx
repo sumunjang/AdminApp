@@ -5,6 +5,7 @@ import RootHome from "../Routes/RootHome";
 import Gateway from "../Routes/Gateway";
 import Question from '../Routes/Question';
 import Register from '../Routes/Register';
+import Statistics from '../Routes/Statistics';
 import List from '../Routes/List';
 const Router: React.FunctionComponent = () => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const Router: React.FunctionComponent = () => (
       <Route path="/root" exact component={RootHome} />
       <Route path="/root/list" exact component={List} />
       <Route path="/root/register" exact component={Register} />
+      <Route path="/root/statistics" exact component={Statistics} />
 
       <Redirect from="*" to="/" />
     </Switch>
