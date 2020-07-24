@@ -61,7 +61,7 @@ const GatewayContainer = ({ match }: { match: RouteInfo }) => {
     React.useEffect(() => {
         setAone({type:"init",value:dummy});
         setAlist({ type: "init", value: null});
-        const socket = openSocket("http://localhost:4000/",{ transports: ['websocket'],reconnection:true,reconnectionAttempts:10 });
+        const socket = openSocket("http://34.105.29.115:3000/",{ transports: ['websocket'],reconnection:true,reconnectionAttempts:10 });
         socket.emit('register',id);
         socket.on("listenServer", addList);
         return () => {

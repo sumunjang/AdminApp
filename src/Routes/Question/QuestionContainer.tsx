@@ -13,7 +13,7 @@ interface RouteInfo extends RouteProps {
     };
 }
 const request = async (id: string,setQuestions:any) => {
-    const res = await axios.get(`http://localhost:4000/forms/${id}`, {
+    const res = await axios.get(`http://34.105.29.115:3000/forms/${id}`, {
         headers: {
             Authorization: "Bearer " + Cookie.LoginCookies.getLoginCookies(),
         },

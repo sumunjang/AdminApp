@@ -9,7 +9,7 @@ interface RootState {
     user: any
 }
 const request = async (id:string,pw:string)=>{
-    const res:{placeId:string,username:string,token:string} = await axios.post("http://localhost:4000/auth/signin",{userid:id,password:pw});
+    const res:{placeId:string,username:string,token:string} = await axios.post("http://34.105.29.115:3000/auth/signin",{userid:id,password:pw});
     return res;
 }
 const AdminHomeContainer: React.FunctionComponent = () => {
