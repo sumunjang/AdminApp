@@ -11,20 +11,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
-const rows = [
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-    { id: 0, name: '행정안전부', date: '16 Mar, 2019', visitors: 10000 },
-];
-
-export default function ListPresenter() {
+export default function ListPresenter({list}:{list:any}) {
     const LinkWrapper = styled(Link)`
     text-decoration: none;
     `;
@@ -44,17 +31,17 @@ export default function ListPresenter() {
                         <Table size="small">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>기관명</TableCell>
-                                    <TableCell>등록 기간</TableCell>
-                                    <TableCell>방문자수</TableCell>
+                                    <TableCell><strong>기관 번호</strong></TableCell>
+                                    <TableCell><strong>기관 명</strong></TableCell>
+                                    <TableCell><strong>기관 주소</strong></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row) => (
-                                    <TableRow key={row.id}>
-                                        <TableCell>{row.name}</TableCell>
-                                        <TableCell>{row.date}</TableCell>
-                                        <TableCell>{row.visitors}</TableCell>
+                                {list.map((e:any,idx:any) => (
+                                    <TableRow key={idx}>
+                                        <TableCell>{e.placeid}</TableCell>
+                                        <TableCell>{e.placename}</TableCell>
+                                        <TableCell>{e.address}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

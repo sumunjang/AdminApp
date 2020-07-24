@@ -1,4 +1,4 @@
-import React,{useRef} from 'react';
+import React, { useRef } from 'react';
 import styled from "styled-components";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -78,13 +78,13 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
         qr.current.href = pngUrl;
         qr.current.download = "시설_QR코드.png";
         qr.current.click();
-      };
+    };
     const downloadAQR = () => {
         const canvas = document.getElementById("qrcode") as any;
         const pngUrl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         qr.current.href = pngUrl;
         qr.current.download = "시설_QR코드.png";
-      };
+    };
     return (
         <>
             <Container container spacing={2}>
@@ -129,45 +129,59 @@ const AdminHomePresenter = ({ user, id, pw, open, qrHandle, handleOpen, handleCl
                         </div>
                     </Grid>
                     <Grid item sm={4} xs={12}>
-                        <LinkWrapper to={`/admin/${user.id}/gateway`}>
-                            <IconButton color="primary" component="span" size="small">
-                                <MeetingRoomIcon style={{ fontSize: 40 }} />
-                                게이트 현황
-                            </IconButton>
-                        </LinkWrapper>
+                        {user.id !== null ?
+                            <LinkWrapper to={`/admin/${user.id}/gateway`}>
+                                <IconButton color="primary" component="span" size="small">
+                                    <MeetingRoomIcon style={{ fontSize: 40 }} />
+                                    게이트 현황
+                                </IconButton>
+                            </LinkWrapper>
+                            :
+                            null
+                        }
                     </Grid>
                     <Grid item sm={4} xs={12}>
-                        <LinkWrapper to={`/admin/${user.id}/question`}>
-                            <IconButton color="primary" component="span" size="small">
-                                <AssignmentIcon style={{ fontSize: 40 }} />
+                        {user.id !== null ?
+                            <LinkWrapper to={`/admin/${user.id}/question`}>
+                                <IconButton color="primary" component="span" size="small">
+                                    <AssignmentIcon style={{ fontSize: 40 }} />
                                 문진표 수정
                             </IconButton>
-                        </LinkWrapper>
+                            </LinkWrapper>
+                            :
+                            <h3 style={{color:"blue"}}>로그인이 필요합니다.</h3>
+                        }
                     </Grid>
                     <Grid item sm={4} xs={12}>
-                        <IconButton color="primary" component="span" size="small"  onClick={qrHandle.handleQRopen}>
-                            <CameraIcon style={{ fontSize: 40 }} />
+                        {user.id !== null ?
+                            <div>
+                                <IconButton color="primary" component="span" size="small" onClick={qrHandle.handleQRopen}>
+                                    <CameraIcon style={{ fontSize: 40 }} />
                                 QR 코드
-                        </IconButton>
-                        <Modal
-                            aria-labelledby="transition-modal-title"
-                            aria-describedby="transition-modal-description"
-                            className={classes.modal}
-                            open={qrHandle.qrOpen}
-                            onClose={qrHandle.handleQRclose}
-                            closeAfterTransition
-                            BackdropComponent={Backdrop}
-                            BackdropProps={{
-                                timeout: 500,
-                            }}
-                        >
-                            <Fade in={qrHandle.qrOpen}>
-                                <Paper elevation={3} style={{height : "200px",width : "200px",textAlign:"center"}} >
-                                    <a style={{color:"blue",textDecoration: "none" ,display:"block",marginTop : "25px",marginBottom:"10px", fontSize: "14px"}} ref={qr} onClick={downloadAQR}> QR코드를 클릭해 다운받기 </a>
-                                    <QRcode id="qrcode" value={`http://34.105.29.115:3000/forms/${user.id}`} onClick={downloadQR} style={{cursor:"pointer"}}/>
-                                </Paper>
-                            </Fade>
-                        </Modal>
+                            </IconButton>
+                                <Modal
+                                    aria-labelledby="transition-modal-title"
+                                    aria-describedby="transition-modal-description"
+                                    className={classes.modal}
+                                    open={qrHandle.qrOpen}
+                                    onClose={qrHandle.handleQRclose}
+                                    closeAfterTransition
+                                    BackdropComponent={Backdrop}
+                                    BackdropProps={{
+                                        timeout: 500,
+                                    }}
+                                >
+                                    <Fade in={qrHandle.qrOpen}>
+                                        <Paper elevation={3} style={{ height: "200px", width: "200px", textAlign: "center" }} >
+                                            <a style={{ color: "blue", textDecoration: "none", display: "block", marginTop: "25px", marginBottom: "10px", fontSize: "14px" }} ref={qr} onClick={downloadAQR}> QR코드를 클릭해 다운받기 </a>
+                                            <QRcode id="qrcode" value={`http://34.105.29.115:3000/forms/${user.id}`} onClick={downloadQR} style={{ cursor: "pointer" }} />
+                                        </Paper>
+                                    </Fade>
+                                </Modal>
+                            </div>
+                            :
+                            null
+                        }
                     </Grid>
                 </Grid>
 
