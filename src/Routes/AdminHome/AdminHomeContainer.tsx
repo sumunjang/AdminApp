@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import AdminHomePresenter from "./AdminHomePresenter";
 import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from '../../redux/User';
@@ -18,6 +18,19 @@ const request = async (id:string,pw:string)=>{
         return null;
     }
 }
+const profileRequest= async (token:string)=>{
+    const res = await axios.get(`http://34.105.29.115:3000/profile`, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+    });
+    console.log(res);
+    const newUser = {
+        id:res.data.placeId,
+        name:res.data.username,
+    };
+    return newUser;
+}
 const AdminHomeContainer: React.FunctionComponent = () => {
     const user = useSelector((state:RootState)=>state.user);
     const dispatch = useDispatch();
@@ -26,6 +39,17 @@ const AdminHomeContainer: React.FunctionComponent = () => {
     const [qrOpen, setQRopen] = React.useState(false);
     const [id, setId] = React.useState('');
     const [pw, setPw] = React.useState('');
+
+    useEffect(() => {
+        // const token = Cookie.LoginCookies.getLoginCookies() as any;
+        // console.log(token);
+        // if(token!==undefined){
+        //     const res = profileRequest(token) as any;
+        //     dispatch(loadUser(res));
+        // }
+        return () => {
+        };
+    }, []);
 
     const handleOpen = () => {
         setOpen(true);
@@ -56,7 +80,6 @@ const AdminHomeContainer: React.FunctionComponent = () => {
         let res:any = null;
         res = await request(id,pw);
         if(res!==null){
-            console.log(res);
             const newUser = {
                 id:res.data.placeId,
                 name:res.data.username,

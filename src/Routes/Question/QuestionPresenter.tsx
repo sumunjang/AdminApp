@@ -34,6 +34,7 @@ const PaperWrapper = styled(Paper)`
     width: 100%;
 `;
 const QuestionPresenter = ({ questions, deleteQuestion, updateQuestion, addQuestion, submitQuestion }: QuestionProps) => {
+    console.log("In presenter",questions);
     return (
         <>
             <Container container spacing={2}>
